@@ -44,7 +44,7 @@ locals {
 module "ec2" {
   source                 = "../../modules/ec2"
   aws_region             = local.aws_region
-  hardcoded_ami                = local.hardcoded_ami
+  hardcoded_ami          = local.hardcoded_ami
   instance_type          = local.instance_type
   key_name               = local.key_name
   vpc_security_group_ids = local.vpc_security_group_ids
