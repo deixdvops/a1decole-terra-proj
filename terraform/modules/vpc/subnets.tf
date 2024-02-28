@@ -2,10 +2,10 @@
 # Resource: aws_subnet
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 
-resource "aws_subnet" "eks-private-subnet" {
+resource "aws_subnet" "private-subnet" {
   count = length(var.availability_zones)
   vpc_id = aws_vpc.main.id
-  cidr_block        = cidrsubnet(var.cidr_block, 8, count.index)
+  cidr_block        = cidrsubnet(var.cidr_block, 8, count.index + length(var.availability_zones))
   availability_zone = element(var.availability_zones, count.index)
   depends_on = [
     aws_vpc.main
@@ -17,10 +17,10 @@ resource "aws_subnet" "eks-private-subnet" {
     })
   }
 
-resource "aws_subnet" "eks-public-subnet" {
+resource "aws_subnet" "public-subnet" {
   count = length(var.availability_zones)
   vpc_id = aws_vpc.main.id
-  cidr_block        = cidrsubnet(var.cidr_block, 8, count.index)
+  cidr_block        = cidrsubnet(var.cidr_block, 8, count.index )
   availability_zone = element(var.availability_zones, count.index)
   map_public_ip_on_launch = var.map_public_ip_on_launch
   depends_on = [

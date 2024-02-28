@@ -52,7 +52,7 @@ variable "availability_zones" {
 
 variable "choice_number_of_nats" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "cluster_name" {
