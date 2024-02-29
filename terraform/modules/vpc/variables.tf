@@ -50,9 +50,9 @@ variable "availability_zones" {
   default = ["us-east-1a", "us-east-1b"]  
 }
 
-variable "choice_number_of_nats" {
+variable "multiple_nats" {
   type    = bool
-  default = true
+  default = false
 }
 
 variable "cluster_name" {
