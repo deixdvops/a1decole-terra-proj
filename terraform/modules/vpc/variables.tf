@@ -4,55 +4,60 @@ variable "aws_region" {
 }
 
 variable "cidr_block" {
-  type= string
+  type        = string
   description = "The vpc cidr-block"
-  default = "10.0.0.0/16" 
+  default     = "10.0.0.0/16"
 }
 
- variable "instance_tenancy" {
-  type = string
+variable "instance_tenancy" {
+  type        = string
   description = "default Makes your instances shared on the host. the other option is dedicated which ensures that EC2 instances launched in this VPC are run on dedicated tenancy instances regardless of the tenancy attribute specified at launch"
-  default= "default"
- }
+  default     = "default"
+}
 
- variable "enable_dns_support" {
-  type = bool
+variable "enable_dns_support" {
+  type        = bool
   description = "Required for EKS. Enable/disable DNS support in the VPC"
-  default = true 
- }
+  default     = true
+}
 
 variable "enable_dns_hostnames" {
-  type = bool
+  type        = bool
   description = "Required for EKS. Enable/disable DNS hostnames in the VPC."
-  default = true
+  default     = true
 }
 
 variable "enable_classiclink_dns_support" {
-  type = bool
+  type        = bool
   description = "Enable/disable ClassicLink DNS Support for the VPC."
-  default = false
+  default     = false
 }
 
 variable "assign_generated_ipv6_cidr_block" {
-  type = bool
+  type        = bool
   description = "Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC."
-  default = false
+  default     = false
 }
 
 variable "map_public_ip_on_launch" {
-  type = bool
+  type        = bool
   description = "Enable EC2 to have public IP at launch time."
-  default = true
+  default     = true
 }
 
 variable "availability_zones" {
   type    = list(string)
-  default = ["us-east-1a", "us-east-1b"]  
+  default = ["us-east-1a", "us-east-1b"]
 }
 
-variable "multiple_nats" {
-  type    = bool
-  default = false
+variable "nat_gateway" {
+  type    = number
+  default = 1
+}
+
+variable "eips" {
+  type    = number
+  default = 1
 }
 
 variable "cluster_name" {
@@ -61,8 +66,8 @@ variable "cluster_name" {
 }
 
 variable "common_tags" {
-  type = map(any)
-  description ="# A map of tags to assign to the resource."
+  type        = map(any)
+  description = "# A map of tags to assign to the resource."
   default = {
     "id"             = "500"
     "owner"          = "SP"
