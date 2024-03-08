@@ -18,3 +18,8 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"]
 }
+
+
+data "aws_vpc" "selected" {
+  id = var.vpc_id
+}

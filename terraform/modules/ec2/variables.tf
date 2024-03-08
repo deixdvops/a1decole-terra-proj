@@ -19,23 +19,29 @@ variable "instance_type" {
 
 variable "key_name" {
   type    = string
-  default = "terraform-aws"
+  default = ""
 }
 
-variable "vpc_security_group_ids" {
-  type    = list(string)
-  default = ["sg-0c51540c60857b7ed"]
+# variable "vpc_security_group_ids" {
+#   type    = list(string)
+#   default = ["sg-0c51540c60857b7ed"]
+# }
+variable "vpc_id" {
+  type = string
+  default = ""
 }
 
 variable "subnet_id" {
   type    = string
-  default = "subnet-096d45c28d9fb4c14"
+  default = ""
 }
 
 variable "volume_size" {
   type    = string
   default = "10"
 }
+
+
 
 variable "tags" {
   type = map(any)

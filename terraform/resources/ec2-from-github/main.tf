@@ -19,7 +19,7 @@ locals {
 
 
 module "ec2-github" {
-  source                 = "github.com/deixdvops/a1decole-terra-proj//terraform/modules/ec2?ref=main"
+  source                 = "git@github.com:deixdvops/a1decole-terra-proj//terraform/modules/ec2?ref=main"
   aws_region             = local.aws_region
   ami                    = local.ami
   instance_type          = local.instance_type

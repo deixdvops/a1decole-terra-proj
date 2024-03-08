@@ -1,9 +1,9 @@
 resource "aws_security_group" "ec2_sg" {
-    name_prefix = "${var.tags["environment"]}-ec2-sg"
+    name_prefix = "${var.common_tags["environment"]}-ec2-sg"
     description = "Allow inbound traffic from port 80"
-    vpc_id            = data.aws_vpc.selected.id
-    tags = merge(var.tags, {
-    Name = format("%s-ec2-sg",  var.tags["environment"])
+    vpc_id      = aws_vpc.main.id
+    tags = merge(var.common_tags, {
+    Name = format("%s-ec2-sg",  var.common_tags["environment"])
   })
     lifecycle {
         create_before_destroy = true
