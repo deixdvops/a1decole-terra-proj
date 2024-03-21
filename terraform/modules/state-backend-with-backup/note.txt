@@ -1,0 +1,14 @@
+# command to list objects versions:
+#aws s3api list-object-versions --bucket sandbox-a1-tf-state --prefix test
+
+#this command is to get the object version we want to delete
+# aws s3api get-object --bucket DOC-EXAMPLE-BUCKET --key example.txt --version-id example.d6tjAKF1iObKbEnNQkIMPjj filename.txt
+
+#Remove the delete mark on several objects
+# aws s3api list-object-versions --bucket DOC-EXAMPLE-BUCKET --prefix example.txt --query 'DeleteMarkers[?IsLatest==`true`]'
+for ex.
+aws s3api list-object-versions --bucket sandbox-a1-tf-state --prefix test --query 'DeleteMarkers[?IsLatest==`true`]'
+
+
+# This command deletes the versionned object : 
+aws s3api delete-object --bucket sandbox-a1-tf-state --version-id 'TOIXUfud8HBzOEfsgeA5s3ImdOigHDXJ' --key test

@@ -1,6 +1,11 @@
 locals {
   choice_ami_id = var.hardcoded_ami ? var.ami : data.aws_ami.ubuntu.id
 }
+
+module "ec2_sg" {
+  source                 = "../security_groups"
+}
+
 resource "aws_instance" "ec2" {
   ami                    = local.choice_ami_id
   instance_type          = var.instance_type
@@ -16,3 +21,4 @@ resource "aws_instance" "ec2" {
     },
   )
 }
+
