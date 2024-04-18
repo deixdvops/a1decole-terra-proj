@@ -11,7 +11,7 @@ variable "common_tags" {
     "owner"          = "dp"
     "teams"          = "OPS"
     "environment"    = "sandbox"
-    "project"        = "rain"
+    "project"        = "deix"
     "create_by"      = "Terraform"
     "cloud_provider" = "aws"
   }
@@ -28,19 +28,39 @@ variable "eks_version" {
   default = "1.28"
 }
 
-variable "min_size" {
+variable "node_min" {
   type    = string
   default = "1"
 }
 
-variable "desired_size" {
+variable "desired_node" {
   type    = string
   default = "2"
 }
 
-variable "max_size" {
+variable "node_max" {
   type    = string
-  default = "5"
+  default = "6"
+}
+
+variable "blue_node_color" {
+  type    = string
+  default = "blue"
+}
+
+variable "green_node_color" {
+  type    = string
+  default = "green"
+}
+
+variable "blue" {
+  type    = bool
+  default = false
+}
+
+variable "green" {
+  type    = bool
+  default = false
 }
 
 variable "capacity_type" {
@@ -66,7 +86,6 @@ variable "disk_size_gb" {
   default = "20"
 }
 
-
 variable "shared_owned" {
   type        = string
   description = "Valid values are shared or owned"
@@ -81,31 +100,27 @@ variable "enable_cluster_autoscaler" {
 
 variable "control_plane_name" {
   type    = string
-  default = "500-sandbox-dp"
+  default = "sandbox-deix"
 }
 
-variable "private_subnets" {
-  type = map(string)
-  default = {
-    us-east-1a = "subnet-0ccf3b7ab0673be56"
-    us-east-1b = "subnet-01035ba06546b54c8"
-    us-east-1c = "subnet-01a05406480f93067"
-  }
-}
-
-variable "blue_node_color" {
+variable "cluster_name" {
   type    = string
-  default = "blue"
+  default = "sandbox-deix"
 }
+
+# variable "private_subnets" {
+#   type = map(string)
+#   default = {
+#     us-east-1a = "subnet-0ccf3b7ab0673be56"
+#     us-east-1b = "subnet-01035ba06546b54c8"
+#     us-east-1c = "subnet-01a05406480f93067"
+#   }
+# }
+
 
 variable "ec2_ssh_key" {
   type        = string
   description = "SSH key to connect to the node from bastion host"
-  default     = "test-key"
-}
-
-variable "deployment_nodegroup" {
-  type    = string
-  default = "blue_green"
+  default     = "ec2"
 }
 

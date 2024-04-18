@@ -26,3 +26,4 @@ backend/.idea/*
 *terraform.tfvars
 
 *.terraform.lock.hcl
+*.terragrunt-cache
