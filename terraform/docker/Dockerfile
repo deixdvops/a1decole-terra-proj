@@ -1,11 +1,7 @@
 # Use Ubuntu as base image
 FROM ubuntu:latest
 RUN apt-get update && \
-    apt-get install -y \
-    curl wget vim \
-    git jq zip \
-    postgresql-client mariadb-client redis-client \
-    mysql-client zip unzip \
+    apt-get install -y curl wget vim git jq zip postgresql-client mariadb-client redis-client mysql-client zip unzip \
     && \
     rm -rf /var/lib/apt/lists/*
 
