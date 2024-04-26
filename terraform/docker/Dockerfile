@@ -1,17 +1,17 @@
 # Use Ubuntu as base image
 FROM ubuntu:latest
 
-RUN apt-get update
-RUN apt-get install -y curl 
-RUN apt-get install -y wget 
-RUN apt-get install -y vim 
-RUN apt-get install -y git 
-RUN apt-get install -y jq 
-RUN apt-get install -y postgresql-client 
-RUN apt-get install -y mariadb-client 
-RUN apt-get install -y mysql-client 
-RUN apt-get install -y unzip 
-RUN apt-get install -y zip
+RUN apt update
+RUN apt install -y curl 
+RUN apt install -y wget 
+RUN apt install -y vim 
+RUN apt install -y git 
+RUN apt install -y jq 
+RUN apt install -y postgresql-client 
+RUN apt install -y mariadb-client 
+RUN apt install -y mysql-client 
+RUN apt install -y unzip 
+RUN apt install -y zip
 
 # Install Terraform
 RUN wget https://releases.hashicorp.com/terraform/1.0.0/terraform_1.0.0_linux_amd64.zip && \
