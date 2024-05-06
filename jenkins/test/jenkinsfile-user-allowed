@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_HUB_REGISTRY="deixdevops"
+        DOCKER_CREDENTIAL_ID = 'DOCKER_CREDENTIAL_ID'
+    }
+    parameters {
+      string(name: 'BRANCH_NAME', defaultValue: 'main', description: '')
+      string(name: 'IMAGE_TAG', defaultValue: 'latest', description: '')
+      string (name: 'PORT_ON _DOCKER_HOST', defaultValue: '', description: '')
+   }
+    stages {
+      stage ('Check Allow Users') {
+        steps {
+          script {
+            wrap([$class: 'BuildUser']) {
+               def build_id = env BUILD_USER_ID
+               def build_user = env.BUILD_USER
+               echo "build_id : $build_id"
+               if (build_id in ['deix', 'peter', 'tom', 'lisa', 'kim']) {
+               echo "Hi $build_user, You are allowed to run this job"
+               }
+               else{
+                error "Hi $build_user, Sorry, you are not allowed to tun this job. Goodbye"
+               }
+            }
+          }
+        }
+      }
+   }
+}
+
+
+#this is to allow users to run this job. any usersin build_id will run the job
